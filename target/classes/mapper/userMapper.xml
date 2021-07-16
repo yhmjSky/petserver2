@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xmut.ygnn.petserver.dao.UserDao">
+    <resultMap id="map" type="xmut.ygnn.petserver.entity.User">
+        <id property="id" column="ID"/>
+        <result property="openid" column="OPENID"/>
+        <result property="username" column="USERNAME" />
+        <result property="nickname" column="NICKNAME" />
+        <result property="password" column="PASSWORD"/>
+        <result property="age" column="AGE" />
+        <result property="sex" column="SEX"/>
+        <result property="phone" column="PHONE"/>
+        <result property="email" column="EMAIL"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="permission" column="PERMISSION"/>
+    </resultMap>
+
+    <select id="getAllUser" resultMap="map" >
+        select * from user
+    </select>
+
+    <select id="getUserByUsername" parameterType="String" resultMap="map">
+        select * from user where USERNAME = #{username}
+    </select>
+
+    <select id="getUserByUserid" parameterType="Integer" resultMap="map">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="getUserByopenid" parameterType="String" resultMap="map">
+        select * from user where openid = #{openid}
+    </select>
+
+
+    <insert id="insert" parameterType="xmut.ygnn.petserver.entity.User">
+        insert into user  values (#{id},#{openid},#{username},#{nickname},#{password},#{age},#{sex},#{phone},#{email},#{address},#{permission} )
+    </insert>
+    
+    <update id="update" parameterType="xmut.ygnn.petserver.entity.User">
+        update user set nickname=#{nickname},password=#{password},age=#{age},sex=#{sex},phone=#{phone},email=#{email},address=#{address},permission=#{permission}
+        where username = #{username}
+    </update>
+
+    <delete id="delete" parameterType="xmut.ygnn.petserver.entity.User">
+        delete from user where username = #{username}
+    </delete>
+
+
+</mapper>
