@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xmut.ygnn.petserver.dao.OrderGoodsDao">
+    <resultMap id="ogmap" type="xmut.ygnn.petserver.entity.OrderGoods">
+        <id property="og_id" column="og_id"/>
+        <result property="order_id" column="order_id"/>
+        <result property="goods_id" column="goods_id" />
+        <result property="num" column="num" />
+        <result property="goods_price" column="goods_price" />
+    </resultMap>
+
+    <select id="getAll" resultMap="ogmap" >
+        select * from order_goods
+    </select>
+
+    <insert id="insert" parameterType="xmut.ygnn.petserver.entity.OrderGoods">
+        insert into order_goods  values (#{og_id},#{order_id},#{goods_id},#{num},#{goods_price})
+    </insert>
+
+    <select id="getGoodsByOrderId" parameterType="Integer" resultMap="ogmap">
+        select * from order_goods where order_id = #{order_id}
+    </select>
+
+
+
+
+</mapper>
