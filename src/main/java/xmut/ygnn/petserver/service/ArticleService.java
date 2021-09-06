@@ -10,7 +10,7 @@ import java.util.List;
 public interface ArticleService {
 
 
-    List<PlayEntity> getAllArticle();
+    List<Article> getAllArticle();
 
 
     boolean insert(Article article);

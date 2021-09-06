@@ -18,7 +18,7 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
-    public List<PlayEntity> getAllArticle() {
+    public List<Article> getAllArticle() {
         return articleDao.getAllArticle();
     }
 

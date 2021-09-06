@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ArticleDao {
 
-    List<PlayEntity> getAllArticle();
+    List<Article> getAllArticle();
 
 
     boolean insert(Article article);
