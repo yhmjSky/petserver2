@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xmut.ygnn.petserver.dao.OrderDao">
+    <resultMap id="ordermap" type="xmut.ygnn.petserver.entity.Order">
+        <id property="order_id" column="order_id"/>
+        <result property="store_id" column="store_id"/>
+        <result property="user_id" column="user_id"/>
+        <result property="user_name" column="user_name" />
+        <result property="user_tel" column="user_tel" />
+        <result property="user_address" column="user_address" />
+        <result property="order_price" column="order_price" />
+        <result property="order_data" column="order_data" />
+        <result property="state" column="state" />
+        <result property="state_s" column="state_s" />
+
+    </resultMap>
+
+    <select id="getAllOrder" resultMap="ordermap" >
+        select * from order_main
+    </select>
+
+    <select id="getOrderByUserId" parameterType="Integer" resultMap="ordermap">
+        select * from order_main where user_id = #{user_id}
+    </select>
+
+    <select id="getOrderByStoreId" parameterType="Integer" resultMap="ordermap">
+        select * from order_main where store_id = #{store_id}
+    </select>
+
+
+
+</mapper>
