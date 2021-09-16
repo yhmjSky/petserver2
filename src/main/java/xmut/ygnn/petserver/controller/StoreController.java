@@ -57,12 +57,17 @@ public class StoreController {
         return result;
     }
 
-    @GetMapping("/line/{name}")
-    public Result list(@PathVariable("name") Serializable name) {
+    @GetMapping("/line1/{name}")
+    public Result list1(@PathVariable("name") Serializable name) {
         result.setSuccess("查询成功！", gson.toJson(this.storeService.getByName(name.toString())));
         return result;
     }
 
+    @GetMapping("/line/{id}")
+    public Result list(@PathVariable("id") Serializable id) {
+        result.setSuccess("查询成功！", gson.toJson(this.storeService.getById(Integer.parseInt(id.toString()))));
+        return result;
+    }
 
 
     @PutMapping("/update")

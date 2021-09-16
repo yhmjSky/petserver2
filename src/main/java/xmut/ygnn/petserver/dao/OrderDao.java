@@ -12,11 +12,15 @@ public interface OrderDao {
 
     List<Order> getOrderByUserId(Integer userId);
 
+    Order getOrderByOrderId(Long orderId);
+
+    List<Order> getOrderByState(Integer state);
+
     List<Order> getOrderByStoreId(Integer storeId);
 
     boolean insert(Order order);
 
-//    boolean update(Order order);
+    boolean update(Order order);
 //
-//    boolean delete(Order order);
+    boolean delete(Order order);
 }

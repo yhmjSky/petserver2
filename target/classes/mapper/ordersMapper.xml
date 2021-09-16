@@ -13,6 +13,7 @@
         <result property="order_data" column="order_data" />
         <result property="state" column="state" />
         <result property="state_s" column="state_s" />
+        <result property="order_reason" column="order_reason" />
 
     </resultMap>
 
@@ -28,10 +29,27 @@
         select * from order_main where user_id = #{user_id}
     </select>
 
-    <select id="getOrderByStoreId" parameterType="Integer" resultMap="ordermap">
+    <select id="getOrderByOrderId" parameterType="Long" resultMap="ordermap">
+        select * from order_main where order_id = #{order_id}
+    </select>
+
+    <select id="getOrderByOrderId" parameterType="Integer" resultMap="ordermap">
         select * from order_main where store_id = #{store_id}
     </select>
 
+    <select id="getOrderByState" parameterType="Integer" resultMap="ordermap">
+        select * from order_main where state = #{state}
+    </select>
 
+    <delete id="delete" parameterType="xmut.ygnn.petserver.entity.Order">
+        delete from order_main where order_id = #{order_id}
+    </delete>
+
+    <update id="update" parameterType="xmut.ygnn.petserver.entity.Order">
+        update order_main set order_id=#{order_id},store_id=#{store_id},user_id=#{user_id},user_name=#{user_name},
+                              user_tel=#{user_tel},user_address=#{user_address},order_price=#{order_price},
+                              order_data=#{order_data},state=#{state},state_s=#{state_s},`order_reason`=#{order_reason}
+        where order_id = #{order_id}
+    </update>
 
 </mapper>

@@ -27,6 +27,11 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    public Store getById(int id) {
+        return storeDao.getById(id);
+    }
+
+    @Override
     public boolean insert(Store store) {
         return storeDao.insert(store);
     }

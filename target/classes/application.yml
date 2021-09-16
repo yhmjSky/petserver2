@@ -8,4 +8,4 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: xmut.ygnn.petserver.model
 server:
-  port: 8081
+  port: 8443

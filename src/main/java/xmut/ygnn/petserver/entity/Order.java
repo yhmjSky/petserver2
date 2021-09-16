@@ -12,8 +12,8 @@ import java.io.Serializable;
 public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer order_id;
+    @TableId(value = "order_id", type = IdType.AUTO)
+    private Long order_id;
 
     private Integer store_id;
 
@@ -33,5 +33,13 @@ public class Order implements Serializable {
 
     private Integer state_s;
 
+    private String order_reason;
 
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
 }

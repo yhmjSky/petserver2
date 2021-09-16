@@ -47,8 +47,8 @@ public class GoodsController {
     }
 
 
-    @DeleteMapping("/delete/{name}")
-    public Result delete(@PathVariable("name") String name) {
+    @DeleteMapping("/deletename/{name}")
+    public Result deletename(@PathVariable("name") String name) {
 
         boolean is=this.goodsService.delete(goodsService.getByName(name));
         if(is){
@@ -67,6 +67,11 @@ public class GoodsController {
     }
 
 
+    @GetMapping("/line1/{goodsId}")
+    public Result list1(@PathVariable("goodsId") Serializable goodsId) {
+        result.setSuccess("查询成功！", gson.toJson(this.goodsService.getByGoodsId(Integer.parseInt(goodsId.toString()))));
+        return result;
+    }
 
     @GetMapping("/line2/{storeCode}")
     public Result list2(@PathVariable("storeCode") Serializable storeCode) {
@@ -84,16 +89,49 @@ public class GoodsController {
 
     @PutMapping("/update")
     public Result update(String json) {
+        System.out.println(json);
         result.setInfo("更改失败！",json);
         Goods goods=null;
         try{
             goods=gson.fromJson(json,Goods.class);
             if(this.goodsService.update(goods)){
-                result.setSuccess("更改成功！",gson.toJson(goodsService.getByName(goods.getName())));
+//                result.setSuccess("更改成功！",gson.toJson(goodsService.getByName(goods.getName())));
+                result.setSuccess("更改成功！",gson.toJson(goods));
             }
         }catch (Exception e){
             e.printStackTrace();
         }
         return result;
     }
+
+    @PutMapping("/update1")
+    public Result update1(@RequestBody String json) {
+        System.out.println(json);
+        result.setInfo("更改失败！",json);
+        Goods goods=null;
+        try{
+            goods=gson.fromJson(json,Goods.class);
+            if(this.goodsService.update(goods)){
+//                result.setSuccess("更改成功！",gson.toJson(goodsService.getByName(goods.getName())));
+                result.setSuccess("更改成功！",gson.toJson(goods));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Result delete(@PathVariable("id") String id) {
+
+        boolean is=this.goodsService.delete(goodsService.getByGoodsId(Integer.parseInt(id)));
+        if(is){
+            result.setSuccess("删除成功！", null);
+
+        }else{
+            result.setInfo("删除失败！",null);
+        }
+        return result;
+    }
+
 }

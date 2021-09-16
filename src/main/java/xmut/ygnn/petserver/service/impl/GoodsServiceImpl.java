@@ -25,6 +25,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public Goods getByGoodsId(Integer goodsId) {
+        return goodsDao.getByGoodsId(goodsId);
+    }
+
+    @Override
     public List<Goods> getByStoreCode(Integer storeCode) {
         return goodsDao.getByStoreCode(storeCode);
     }

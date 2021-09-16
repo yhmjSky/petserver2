@@ -23,6 +23,14 @@
         select * from goods where style = #{style}
     </select>
 
+    <select id="getByName" parameterType="String" resultMap="goodsmap">
+        select * from goods where name = #{name}
+    </select>
+
+    <select id="getByGoodsId" parameterType="Integer" resultMap="goodsmap">
+        select * from goods where id = #{id}
+    </select>
+
     <select id="getByStoreCode" parameterType="Integer" resultMap="goodsmap">
         select * from goods where storecode = #{storecode}
     </select>
@@ -31,5 +39,15 @@
         select * from goods where  storecode = #{storeCode} and style = #{style}
     </select>
 
+    <delete id="delete" parameterType="xmut.ygnn.petserver.entity.Goods">
+        delete from goods where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="xmut.ygnn.petserver.entity.Goods">
+        update goods set id=#{id},name=#{name},storecode=#{storecode},price=#{price},
+                         unit=#{unit},stock=#{stock},img=#{img},
+                              style=#{style},`describe`=#{describe}
+        where id = #{id}
+    </update>
 
 </mapper>

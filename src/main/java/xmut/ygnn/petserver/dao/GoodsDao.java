@@ -11,6 +11,8 @@ public interface GoodsDao {
 
     Goods getByName(String name);
 
+    Goods getByGoodsId(Integer goodsId);
+
     List<Goods> getByStoreCode(Integer storeCode);
 
     List<Goods> getByStyle(Integer style);

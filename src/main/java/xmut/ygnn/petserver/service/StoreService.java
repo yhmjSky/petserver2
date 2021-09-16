@@ -12,6 +12,8 @@ public interface StoreService {
 
     Store getByName(String name);
 
+    Store getById(int id);
+
     boolean insert(Store store);
 
     boolean update(Store store);

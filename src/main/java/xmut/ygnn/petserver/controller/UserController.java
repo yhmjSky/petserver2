@@ -95,6 +95,7 @@ public class UserController {
         }catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("json: " + json);
         user1=userService.getUserByUsername(user.getUsername());
         if(user1!=null){//存在该账户
             if(user1.getPassword().equals(user.getPassword())){//密码正确

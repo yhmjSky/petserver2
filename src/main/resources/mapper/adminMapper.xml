@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xmut.ygnn.petserver.dao.AdminDao">
+    <resultMap id="adminmap" type="xmut.ygnn.petserver.entity.Admin">
+        <id property="id" column="ID"/>
+        <result property="username" column="USERNAME" />
+        <result property="password" column="PASSWORD"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <select id="getUserByAdminName" parameterType="String" resultMap="adminmap">
+        select * from admin where USERNAME = #{username}
+    </select>
+
+
+
+</mapper>

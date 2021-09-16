@@ -20,8 +20,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Order getOrderByOrderId(Long orderId) {
+        return orderDao.getOrderByOrderId(orderId);
+    }
+
+    @Override
     public List<Order> getOrderByUserId(Integer userId) {
         return orderDao.getOrderByUserId(userId);
+    }
+
+    @Override
+    public List<Order> getOrderByState(Integer state) {
+        return orderDao.getOrderByState(state);
     }
 
     @Override
@@ -33,6 +43,16 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean insert(Order order) {
         return orderDao.insert(order);
+    }
+
+    @Override
+    public boolean update(Order order) {
+        return orderDao.update(order);
+    }
+
+    @Override
+    public boolean delete(Order order) {
+        return orderDao.delete(order);
     }
 
 //    @Override

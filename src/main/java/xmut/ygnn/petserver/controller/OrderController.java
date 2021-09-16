@@ -49,11 +49,67 @@ public class OrderController {
         return result;
     }
 
-
+    @GetMapping("/line1/{orderId}")
+    public Result list1(@PathVariable("orderId") Serializable orderId) {
+        result.setSuccess("查询成功！", gson.toJson(this.orderService.getOrderByOrderId(Long.parseLong(orderId.toString()))));
+        return result;
+    }
 
     @GetMapping("/line2/{storeId}")
     public Result list2(@PathVariable("storeId") Serializable storeId) {
         result.setSuccess("查询成功！", gson.toJson(this.orderService.getOrderByStoreId(Integer.parseInt(storeId.toString()))));
         return result;
     }
+
+    @GetMapping("/state/{state}")
+    public Result list3(@PathVariable("state") Serializable state) {
+        result.setSuccess("查询成功！", gson.toJson(this.orderService.getOrderByState(Integer.parseInt(state.toString()))));
+        return result;
+    }
+
+    @PutMapping("/update2")
+    public Result update2(@RequestBody String json) {
+        System.out.println(json);
+        result.setInfo("更改失败！",json);
+        Order order=null;
+        try{
+            order=gson.fromJson(json,Order.class);
+            if(this.orderService.update(order)){
+                result.setSuccess("更改成功！",gson.toJson(order));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @PutMapping("/update")
+    public Result update( String json) {
+        System.out.println(json);
+        result.setInfo("更改失败！",json);
+        Order order=null;
+        try{
+            order=gson.fromJson(json,Order.class);
+            if(this.orderService.update(order)){
+                result.setSuccess("更改成功！",gson.toJson(order));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @DeleteMapping("/delete/{goodsId}")
+    public Result delete(@PathVariable("goodsId") String goodsId) {
+
+        boolean is=this.orderService.delete(orderService.getOrderByOrderId(Long.parseLong(goodsId)));
+        if(is){
+            result.setSuccess("删除成功！", null);
+
+        }else{
+            result.setInfo("删除失败！",null);
+        }
+        return result;
+    }
+
 }

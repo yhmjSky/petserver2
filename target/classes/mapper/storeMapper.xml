@@ -18,6 +18,10 @@
         select * from store where name = #{name}
     </select>
 
+    <select id="getById" parameterType="Integer" resultMap="storemap">
+        select * from store where id = #{id}
+    </select>
+
 
 
 </mapper>

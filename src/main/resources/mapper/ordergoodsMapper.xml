@@ -18,7 +18,7 @@
         insert into order_goods  values (#{og_id},#{order_id},#{goods_id},#{num},#{goods_price})
     </insert>
 
-    <select id="getGoodsByOrderId" parameterType="Integer" resultMap="ogmap">
+    <select id="getGoodsByOrderId" parameterType="Long" resultMap="ogmap">
         select * from order_goods where order_id = #{order_id}
     </select>
 

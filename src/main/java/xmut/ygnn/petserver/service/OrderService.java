@@ -10,14 +10,18 @@ public interface OrderService {
 
     List<Order> getAllOrder();
 
+    Order getOrderByOrderId(Long orderId);
+
     List<Order> getOrderByUserId(Integer userId);
+
+    List<Order> getOrderByState(Integer state);
 
     List<Order> getOrderByStoreId(Integer storeId);
 
     boolean insert(Order order);
 
-//    boolean update(Order order);
-//
-//    boolean delete(Order order);
+    boolean update(Order order);
+
+    boolean delete(Order order);
 
 }

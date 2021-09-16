@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xmut.ygnn.petserver.dao.DiscussDao">
+    <resultMap id="discussmap" type="xmut.ygnn.petserver.entity.Discuss">
+        <id property="id" column="ID"/>
+        <result property="userId" column="userId"/>
+        <result property="goodsId" column="goodsId" />
+        <result property="comment" column="comment" />
+        <result property="d_time" column="d_time" />
+
+    </resultMap>
+
+    <select id="getAll" resultMap="discussmap" >
+        select * from discuss
+    </select>
+
+    <insert id="insert" parameterType="xmut.ygnn.petserver.entity.Discuss">
+        insert into discuss  values (#{id},#{userId},#{goodsId},#{comment},#{d_time})
+    </insert>
+
+    <update id="update" parameterType="xmut.ygnn.petserver.entity.Discuss">
+        update goods set id=#{id},userId=#{userId},goodsId=#{goodsId},
+                         `comment`=#{comment},
+        where id = #{id}
+    </update>
+
+
+</mapper>
